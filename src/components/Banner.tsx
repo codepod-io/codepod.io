@@ -4,7 +4,8 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 function JupyterConBanner() {
   // persist this banner in local storage
   const key = "jupytercon-banner";
-  const value = localStorage.getItem(key) || false;
+  const value =
+    (typeof window !== "undefined" && localStorage.getItem(key)) || false;
   const [close, setClose] = React.useState(value);
   if (close) return null;
   return (
@@ -57,8 +58,8 @@ function JupyterConBanner() {
           type="button"
           className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
           onClick={() => {
-            localStorage.setItem(key, "true");
             setClose(true);
+            typeof window !== "undefined" && localStorage.setItem(key, "true");
           }}
         >
           <span className="sr-only">Dismiss</span>
