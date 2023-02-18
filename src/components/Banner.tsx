@@ -43,7 +43,7 @@ function JupyterConBanner() {
       </svg>
       <p className="text-sm leading-6 text-gray-900">
         We are excited to give a talk at <b>JupyterCon 2023</b> on May 10-12,
-        see you in Paris!{" "}
+        2023. See you in Paris!{" "}
         <a
           href="https://www.jupytercon.com/"
           target="_blank"
