@@ -71,9 +71,5 @@ function JupyterConBanner() {
 }
 
 export function Banner() {
-  return (
-    <>
-      <JupyterConBanner />
-    </>
-  );
+  return <></>;
 }
