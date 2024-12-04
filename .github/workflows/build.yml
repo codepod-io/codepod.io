@@ -1,4 +1,6 @@
-name: Test deployment
+# Make sure the website can be built for each PR.
+
+name: CI Build for pull requests
 
 on:
   pull_request:
@@ -16,9 +18,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: yarn
+          cache: pnpm
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Test build website
-        run: yarn build
+        run: pnpm build

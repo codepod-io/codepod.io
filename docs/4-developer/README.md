@@ -152,7 +152,7 @@ Then, you can access the new stack at `http://localhost:8080`.
 - Backend
   - [Proxy](https://github.com/codepod-io/codepod/tree/main/proxy): reverse proxy server, it forwards/redirects client requests to proper servers in the backbone.
   - [Api](https://github.com/codepod-io/codepod/tree/main/api): the API server handles users’ actions on the Codepod client app, it authenticates users, persists the repo, scope and pod states to the Postgres database.
-  - [Runtime](https://github.com/codepod-io/codepod/tree/main/runtime): Codepod runtime server, <http://localhost:4020>, this URL is used in the front-end runtime.js to connect to the runtime, it handles the code execution logic on various kernels, e.g., IPython.
+  - [Runtime](https://github.com/codepod-io/codepod/tree/main/runtime): Codepod runtime server, http://localhost:4020, this URL is used in the front-end runtime.js to connect to the runtime, it handles the code execution logic on various kernels, e.g., IPython.
 
 ### References
 
