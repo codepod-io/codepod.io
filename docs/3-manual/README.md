@@ -1,191 +1,221 @@
-# User Manual
+# CodePod App User Manual
 
-**Try it [here (experimental)](https://app.codepod.io)**
+Try it at https://test.codepod.io
 
-## Signup & Login
+Note that this is a test server, and no data is preserved to our official release.
 
-Codepod is a web application that offers standard user authentication. Moreover,
-you can experience the convenience of instant access by logging in with your
-Google account.
+## Introduction
 
-<img src={require("./assets/signup.png").default} alt="xxx" width="600" />
+CodePod is a web app. You can login with your Google account and start using it
+right away. All code are saved in the cloud and executed in the cloud runtimes.
 
-## The dashboard and project creation
+This manual describes all the Operations and User Interface for the app.
 
-You will be greeted with the dashboard. It will list your projects and those that shared with you by other users. You can create a new project on the dashboard, which drops you into the new project canvas.
+## Pods
 
-<!-- ![guestUser](https://user-images.githubusercontent.com/4576201/235222305-6cd13058-6a35-43b8-8a8d-36c94c4b6f54.png) -->
+### Creating pods
 
-<img src={require("./assets/guestUser.png").default} alt="xxx" width="600" />
+Right click on the canvas, then click "python". This will create a python pod at the position of clicking.
 
-## The Canvas
+<!-- This works in Docusaurus. However, we cannot set the width. -->
+<!-- ![Right Click Menu](assets/right-click.png) -->
 
-### Create your first code pod
+<!-- This html doesn't work in Docusaurus. -->
+<!-- <img src="./assets/right-click.png" alt="Right Click Menu" width="300"/> -->
 
-In the canvas, you can right-click on the Canvas to create pods and scopes. Create a new pod, and you can type your hello world code in the cell.
+<!-- Instead, use this syntax. However, the markdown file cannot be viewed with images on GitHub anymore. -->
 
-<!-- ![create-pod](./assets/create-pod.png) -->
+<img src={require("./assets/right-click.png").default} alt="Right Click Menu" width="300"/>
 
-<img
-src={require("./assets/create-pod.png").default}
-alt="Example banner"
-width="600"
-/>
+### Pod toolbar
 
-### The runtime and sidebar
+When you hover on the pod, the toolbar will show on the top right corner.
 
-The sidebar shows some status of the project and runtime, as well as settings. Wait until you have the runtime ready and idle for running code. The sidebar can be folded with the "Fold" button.
+<img src={require("./assets/toolbar.png").default} alt="" width="300"/>
 
-### Execute the code
+### Moving pods
 
-Back to your code, you can execute the pod by clicking the "run" button on the floating toolbar, or press `<shift>+<enter>`.
+Option 1: There's a grab icon on the toolbar. Drag on it will move the pod.
 
-<img
-src={require("./assets/execute.png").default}
-alt="Example banner"
-width="600"
-/>
+Option 2: You can also drag to select one or more pod and move them at once.
 
-### Moving around the Canvas
+<img src={require("./assets/select.png").default} alt="" width="300"/>
 
-You can move your pods with the drag handles on the toolbar. Simply drag-n-drop.
+Special note for scope: if you want to "drag-to-select" a scope, you need to drag from outside into it. If you drag inside a scope, only inner nodes will be selected.
 
-## Organize your Canvas with scopes
+### Resizing a pod
 
-### Create your first scope
+You can resize the width of a pod by dragging at its right edge. The height is
+automatically adjusted based on content.
 
-One key feature that Codepod brings is the scope. You can create a scope by right-clicking on the canvas. Scopes are like modules in your code, they can be nested, and you can move your pods into scopes. Drag-n-drop your pods into the scope; a target scope will be highlighted when you drag a pod over it.
+A scope can be resized in all directions on all edges.
 
-<img
-src={require("./assets/moveIntoScope.png").default}
-alt="Example banner"
-width="600"
-/>
+### Deleting a pod
 
-You can also run all the pods in the scope by clicking the "Run" button in the scope toolbar. It will execute all pods and scopes in the scope by geometric order, from top-left to bottom-right.
+In the pod toolbar, there's a delete pod button to delete a pod.
 
-<img src={require("./assets/executeScope.png").default} alt="xxx" width="600" />
+<img src={require("./assets/delete.png").default} alt="" width="300"/>
 
-### The scoped runtime semantics
+## Canvas
 
-The scoped runtime supports python variables, functions, and classes. You can define them in the scope, and use them in the pods. The scope is like a python module. All names defined in the scope stays inside the scope. The outside world cannot see it.
+### Moving around the Canvas; Zoom In & Out
 
-### Export to parent as public API
+If you're using a touchpad
 
-A scope can define some public APIs, which can be used by outer scopes. You can define a public API by adding a `@export` decorator at the first line of the pod. Once you execute it, the pod will be highlighted with a thick green border to indicate that this pod defines a public API. The public API can then be resolved in outer scope.
+- swiping with two fingers can move your view on the Canvas
+- pinch with two fingers to zoom in and out
 
-<img
-src={require("./assets/scopeExport.png").default}
-alt="Example banner"
-width="600"
-/>
+If you're using a mouse
 
-The names can be further exported to ancestor nodes.
+- click and hold the middle button can drag the Canvas
+- scroll to zoom in and out
 
-<img
-src={require("./assets/scopeRecursiveExport.png").default}
-alt="Example banner"
-width="600"
-/>
+<img src={require("./assets/Gestures_Two_Finger_Scroll.png").default} alt="" width="300"/>
 
-### Lexical scoping
+## Execution
 
-The other direction, from parent scope to child scope, is automatic. It works like the lexical scoping where inner scopes can see the names in outer scopes. This enables you to define global variables and utility functions in the outermost scope, and use them anywhere on the Canvas.
+### Run a pod
 
-<img
-src={require("./assets/parentToChild.png").default}
-alt="Example banner"
-width="600"
-/>
+First, you need to start the runtime. In the runtime section of the sidebar,
+click the start button in python. The kernel will start and will be in "idle"
+status when it's ready.
 
-## Writing docs in Rich-text editor
+If it's your first time using the app, a user volume will be created for you
+when you start your first runtime, therefore, it will take up to 1 minute for
+the kernel to be available. Future kernels should be started within 5 seconds.
 
-We integrate the Remirror/ProseMirror editor, so that you can write rich-text documents in the pods. You can create a rich-text pod by right-clicking on the canvas. The rich-text pod supports markdown syntax, and you can insert images and videos.
+The kernel will be shutdown in 24 hours.
 
-<img
-src={require("./assets/richText.png").default}
-alt="Example banner"
-width="600"
-/>
+Once the kernel is ready, you can click the run button on the pod toolbar to run
+the code. Like Jupyter notebook, the results will be displayed under the code.
 
-The rich-text editor supports:
+You can also use `shift-enter` keyboard shortcut to trigger the code execution.
 
-- Markdown syntax
-- Insert images
-- Tables
-- Links
+Unlike Jupyter, you can safely close the page while the pod is running. The results will be continuely populated in the cloud.
 
-## Copy-n-paste
+<img src={require("./assets/run.png").default} alt="" width="300"/>
 
-You can copy a pod or a scope, and paste it anywhere on the canvas. The copy-n-paste feature is in the pod toolbar. You can also paste across browser tabs. On paste, a shadowed visualization will be moving with your cursor until you click to drop it.
+If the result output is too long, it will be folded. You can expand it using the
+button on the top-right of the result area.
 
-<img src={require("./assets/copyNPaste.png").default} alt="xxx" width="600" />
+### User volume
 
-## Auto-layout
+The runtime kernel is a cloud container. The container will be re-recreated when the runtime restarts, so the files in the container are deleted. Each repository has a separate runtime container that doesn't share files.
 
-It is painful and inefficient to resize and position the pods and scopes manually. Codepod provides an auto-layout feature to help you organize your canvas. The auto-layout setting is in the sidebar, default to enabled.
+To persist data files, there's a user volume mounted at `/mnt/data` where you can store your files that need to persist across kernel restarts and across repo. This user volume is a NFS volume, therefore the IO performance is much slower compared to local disk on the container.
 
-Before auto-layout, the pods and scopes could be overlapped and messy.
+## Scope
 
-<img
-src={require("./assets/autoLayoutBefore.png").default}
-alt="Example banner"
-width="600"
-/>
+### Creating a scope
 
-After auto-layout, the pods and scopes are organized by a collision-free algorithm, and the scopes will be resized to fit the pods inside.
+You can drag on canvas to select multiple pods. Then right click on the
+selection, and choose "create scope". A scope will be created.
 
-<img
-src={require("./assets/autoLayoutAfter.png").default}
-alt="xxx"
-width="600"
-/>
+When you drag to move the scope, all sub-nodes are moved together.
 
-## Contextual zooming
+The drag-to-select behavior on scope is slightly different. You have to drag
+from outside of a scope to select the scope. Dragging inside the scope will
+select nodes in the scope.
 
-The canvas can be zoomed in and out by the touch pad pining, the buttons, and the mouse wheel. We introduce a major feature called "contextual zoom". The idea is to see different level of details at different zoom levels, so that users can focus on a small subsets of content to work on. Think of it as Google maps where you zoom in & out to see different levels of details.
+<img src={require("./assets/create-scope.png").default} alt="" width="300"/>
 
-The feature contains roughly two significant behaviors:
+### Removing a scope
 
-1. different levels in the hierarchy have different font sizes
-2. when zooming out, the pods and scopes that become too small to view will be collapsed into a block, with large text summarizing its content. These blocks can be dragged and moved easily (which is pretty easy to use).
+In the scope's toolbar, click "remove scope" to remove the scope but keeps its children.
 
-This feature is experimental and disabled by default. There's a setting contextual zoom in the sidebar to enable it.
+To remove the scope and all its children, click "remove scope and children".
 
-Fully expanded (zoomed in):
+### Copy and paste a scope
 
-<img src={require("./assets/zoomExpanded.png").default} alt="xxx" width="600" />
+To copy a scope, click on the "copy" button in the scope toolbar.
 
-Zoom out:
+To paste a scope, right click on the canvas and choose paste. The scope will be pasted into the right click position.
 
-<img src={require("./assets/zoom1.png").default} alt="xxx" width="600" />
+You can copy and paste scopes across repositories. It will overwrite your system clipboard.
 
-Zoom out:
+### Move a pod into and out of a scope
 
-<img src={require("./assets/zoom2.png").default} alt="xxx" width="600" />
+Dragging the pods won't change the scoping, but there will be visual marks to highlight problems:
 
-Zoom out:
+- If two pods overlap, their borders turn pink.
+- If a pod is moved out of its scope, the pod and the scope borders will trun
+  orange.
 
-<img src={require("./assets/zoomAll.png").default} alt="xxx" width="600" />
+<img src={require("./assets/overlap.png").default} alt="" width="300"/>
 
-## Exporting
+<img src={require("./assets/outofscope.png").default} alt="" width="300"/>
 
-You can export your project into a SVG image, executable Python files, and a Jupyter notebook. The export button is in the sidebar.
+To actually move a pod into a scope, you can first move it in place, then click the "change scope" button on the toolbar (in the dropdown menu).
 
-## Share your project and collaborate in real time
+<img src={require("./assets/changescope.png").default} alt="" width="300"/>
 
-Modern collaboration cannot be without real-time collaboration. Codepod supports real-time collaboration. You can share your project with other users, and they can edit the project together with you in real time.
+To move a pod out of a scope, you can first move it out then click the "change scope" button on the toolbar.
 
-<img src={require("./assets/shareDialog.png").default} alt="xxx" width="600" />
+### Run a scope with topological order
 
-The shared projects will be shown in the bottom of the Guest's dashboard. The real-time collaboration happens in the following places:
+You can run a scope by clicking the run button on the toolbar. The execution
+order is the topological order w.r.t. the def-use edges and manual edges. That
+is, if there's an edge from a to b, a will be executed before b. In case of
+cycle, the cycle point is silently skipped.
 
-- The code pods
-- The rich-text pods
-- The Canvas: nodes and edges
+### Scope semantics
 
-## In case of the app went wrong
+Not only can you organize pods with scopes, they also have semantic meanings to
+help you isolate namespaces in the runtime.
 
-The project is still in heavy development, and bugs can happen. If you find the page is not responding, you can try to refresh the page.
+First of all, scopes are separated. The function `foo` in one scope is different
+from the `foo` in another. A function is only visible inside the scope
+(including its children).
 
-If you would like to hunter the bugs, welcome and thanks! You can open the developer console and see if there are errors. Let us know by openning a GitHub issue.
+<img src={require("./assets/scope-separate.png").default} alt="" width="300"/>
+
+Second, you can export a function out into its parent. This is the use case
+where inner scope implements some lower-level functions, and expose a public API
+to higher level. You can mark a pod as public by clicking on the "toggle public"
+button. The pod will be visually marked "public".
+
+<img src={require("./assets/public.png").default} alt="" width="300"/>
+
+## Edge
+
+### Drawing an edge
+
+There's a edge icon in a pod's toolbar. Drag on it and drop onto another pod
+will create an edge. This edge can be used to mark the execution order. For example, you can draw edges of a chain of pods and run the chain to simulate a Jupyter notebook.
+
+<img src={require("./assets/draw-edge.png").default} alt="" width="300"/>
+
+### Def-use visualization
+
+If a pod defines variables, functions, or classes, the defined symbols will be shown in the top-left corner.
+
+If a pod calls a function defiend in another pod, there will be an edge from the definition to the callsite.
+
+The def-use edges are only visualized inside the scope to avoid cluttering the view.
+
+<img src={require("./assets/defuse.png").default} alt="" width="300"/>
+
+## Other
+
+### Rich text pod (markdown)
+
+You can create a rich text pod by right clicking on the canvas and selecting
+"Note". This is a notion-like WYSIWYG editor with markdown syntax support. You
+can write notes and documents in this editor.
+
+<img src={require("./assets/markdown.png").default} alt="" width="300"/>
+
+### Import a Jupyter notebook
+
+Right click on the Canvas and select "Import", then choose your jupyter notebook file. The notebook will be imported into a scope and layout horizontally.
+
+### (Best?) Practices to order the pods
+
+- Put logical related code pods into a scope
+- Use nested scopes to build a hierarchy:
+  - inner scope represents lower level functions
+  - outer scope represents higher level functions.
+  - inner scope expose APIs into outer scope
+- Use def-use edges to layout the pods. E.g., order the pods so that edges flow from top-left to bottom-right.
+
+<img src={require("./assets/best-practice.png").default} alt="" width="800"/>
