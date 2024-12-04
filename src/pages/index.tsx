@@ -73,7 +73,7 @@ function Hero() {
               boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
             }}
           >
-            Try it online (experimental)
+            Try it online
           </Link>
           <Link
             href="/docs/manual"
