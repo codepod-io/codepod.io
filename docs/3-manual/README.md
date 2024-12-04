@@ -219,3 +219,12 @@ Right click on the Canvas and select "Import", then choose your jupyter notebook
 - Use def-use edges to layout the pods. E.g., order the pods so that edges flow from top-left to bottom-right.
 
 <img src={require("./assets/best-practice.png").default} alt="" width="800"/>
+
+<!-- # Known Caveats
+
+These are problems that have not been addressed in the current implementation.
+
+- Scoped runtime: Python global keyword does not work
+- Kernel status: may not be up-to-date. Need manual refresh.
+- Kernel metrics need manual refresh. Lag for 15s due to k8s metrics interval.
+- Tqdm doesn't work very well, it will output many lines of progress bar. -->
