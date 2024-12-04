@@ -11,6 +11,20 @@ right away. All code are saved in the cloud and executed in the cloud runtimes.
 
 This manual describes all the Operations and User Interface for the app.
 
+## FAQs
+
+- How to create a pod? [Creating pods](#creating-pods)
+- How to delete a pod? [Deleting a pod](#deleting-a-pod)
+- How to create a scope? [Creating a scope](#creating-a-scope)
+- How to move into and out of a scope? [Move a pod into and out of a scope](#move-a-pod-into-and-out-of-a-scope)
+- How to execute some code? [Run a pod](#run-a-pod)
+- How to write markdown? [Rich text pod (markdown)](#rich-text-pod-markdown)
+- How to create edges? [Drawing an edge](#drawing-an-edge)
+- How to move on canvas? [Moving around the Canvas; Zoom In \& Out](#moving-around-the-canvas-zoom-in--out)
+- How to resize? [Resizing a pod](#resizing-a-pod)
+- How to copy & paste? [Copy and paste a scope](#copy-and-paste-a-scope)
+- How to import jupyter notebook files? [Import a Jupyter notebook](#import-a-jupyter-notebook)
+
 ## Pods
 
 ### Creating pods
