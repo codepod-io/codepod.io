@@ -83,12 +83,13 @@ const config: Config = {
         src: "img/logo.png",
       },
       items: [
-        {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Docs",
-        },
+        // {
+        //   type: "docSidebar",
+        //   sidebarId: "tutorialSidebar",
+        //   position: "left",
+        //   label: "Docs",
+        // },
+        { to: "/docs/intro", label: "Docs", position: "left" },
         { to: "/docs/manual", label: "Manual", position: "left" },
         // {to: '/blog', label: 'Blog', position: 'left'},
         {
