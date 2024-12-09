@@ -39,7 +39,10 @@ Right click on the canvas, then click "python". This will create a python pod at
 
 <!-- Instead, use this syntax. However, the markdown file cannot be viewed with images on GitHub anymore. -->
 
-<img src={require("./assets/right-click.png").default} alt="Right Click Menu" width="300"/>
+<!-- <img src={require("./assets/right-click.png").default} alt="Right Click Menu" width="300"/> -->
+
+<!-- ![right-click](./assets/right-click.gif) -->
+![create-pod](./assets/create-pod.gif)
 
 ### Pod toolbar
 
@@ -53,16 +56,11 @@ Option 1: There's a grab icon on the toolbar. Drag on it will move the pod.
 
 Option 2: You can also drag to select one or more pod and move them at once.
 
-<img src={require("./assets/select.png").default} alt="" width="300"/>
+<!-- <img src={require("./assets/select.png").default} alt="" width="300"/> -->
+
+![move](./assets/move.gif)
 
 Special note for scope: if you want to "drag-to-select" a scope, you need to drag from outside into it. If you drag inside a scope, only inner nodes will be selected.
-
-### Resizing a pod
-
-You can resize the width of a pod by dragging at its right edge. The height is
-automatically adjusted based on content.
-
-A scope can be resized in all directions on all edges.
 
 ### Deleting a pod
 
@@ -107,7 +105,9 @@ You can also use `shift-enter` keyboard shortcut to trigger the code execution.
 
 Unlike Jupyter, you can safely close the page while the pod is running. The results will be continuely populated in the cloud.
 
-<img src={require("./assets/run.png").default} alt="" width="300"/>
+<!-- <img src={require("./assets/run.png").default} alt="" width="300"/> -->
+
+![run](./assets/run.gif)
 
 If the result output is too long, it will be folded. You can expand it using the
 button on the top-right of the result area.
@@ -131,7 +131,9 @@ The drag-to-select behavior on scope is slightly different. You have to drag
 from outside of a scope to select the scope. Dragging inside the scope will
 select nodes in the scope.
 
-<img src={require("./assets/create-scope.png").default} alt="" width="300"/>
+<!-- <img src={require("./assets/create-scope.png").default} alt="" width="300"/> -->
+
+![create-scope](./assets/create-scope.gif)
 
 ### Removing a scope
 
@@ -165,7 +167,9 @@ To actually move a pod into a scope, you can first move it in place, then click 
 
 To move a pod out of a scope, you can first move it out then click the "change scope" button on the toolbar.
 
-### Run a scope with topological order
+![change scope](./assets/changescope.gif)
+
+### Run all pods in a scope
 
 You can run a scope by clicking the run button on the toolbar. The execution
 order is the topological order w.r.t. the def-use edges and manual edges. That
@@ -181,14 +185,14 @@ First of all, scopes are separated. The function `foo` in one scope is different
 from the `foo` in another. A function is only visible inside the scope
 (including its children).
 
-<img src={require("./assets/scope-separate.png").default} alt="" width="300"/>
+<img src={require("./assets/scope-separate.png").default} alt="" width="600"/>
 
 Second, you can export a function out into its parent. This is the use case
 where inner scope implements some lower-level functions, and expose a public API
 to higher level. You can mark a pod as public by clicking on the "toggle public"
 button. The pod will be visually marked "public".
 
-<img src={require("./assets/public.png").default} alt="" width="300"/>
+<img src={require("./assets/public.png").default} alt="" width="600"/>
 
 ## Edge
 
@@ -197,7 +201,9 @@ button. The pod will be visually marked "public".
 There's a edge icon in a pod's toolbar. Drag on it and drop onto another pod
 will create an edge. This edge can be used to mark the execution order. For example, you can draw edges of a chain of pods and run the chain to simulate a Jupyter notebook.
 
-<img src={require("./assets/draw-edge.png").default} alt="" width="300"/>
+<!-- <img src={require("./assets/draw-edge.png").default} alt="" width="300"/> -->
+
+![draw edge](./assets/draw-edge.gif)
 
 ### Def-use visualization
 
@@ -211,6 +217,15 @@ The def-use edges are only visualized inside the scope to avoid cluttering the v
 
 ## Other
 
+### Resizing a pod or scope
+
+You can resize the width of a pod by dragging at its right edge. The height is
+automatically adjusted based on content.
+
+A scope can be resized in all directions on all edges.
+
+![resize](./assets/resize.gif)
+
 ### Rich text pod (markdown)
 
 You can create a rich text pod by right clicking on the canvas and selecting
@@ -222,6 +237,9 @@ can write notes and documents in this editor.
 ### Import a Jupyter notebook
 
 Right click on the Canvas and select "Import", then choose your jupyter notebook file. The notebook will be imported into a scope and layout horizontally.
+
+<!-- <img src={require("./assets/markdown.png").default} alt=""/> -->
+![import](./assets/import.gif)
 
 ### (Best?) Practices to order the pods
 
