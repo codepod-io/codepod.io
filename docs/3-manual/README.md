@@ -4,12 +4,53 @@ Try it at https://test.codepod.io
 
 Note that this is a test server, and no data is preserved to our official release.
 
+Table of Contents:
+
+- [CodePod App User Manual](#codepod-app-user-manual)
+  - [Introduction](#introduction)
+  - [Cheatsheet](#cheatsheet)
+  - [FAQs](#faqs)
+  - [Pods](#pods)
+  - [Canvas](#canvas)
+  - [Execution](#execution)
+  - [Scope](#scope)
+  - [Edge](#edge)
+  - [Other](#other)
+
 ## Introduction
 
 CodePod is a web app. You can login with your Google account and start using it
 right away. All code are saved in the cloud and executed in the cloud runtimes.
 
 This manual describes all the Operations and User Interface for the app.
+
+<!-- ![](https://youtu.be/ztDC98pR6Gw) -->
+
+<!-- width="560" height="315"  -->
+<iframe width="840" height="472.5" src="https://www.youtube.com/embed/ztDC98pR6Gw?si=yDkZLr6vUgLM6IpV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## tl;dr (Cheatsheet)
+
+| How to ..              | Solution                                                                          |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| Create a pod           | Right click -> New -> Python                                                      |
+| Delete a pod           | Pod Toolbar -> More -> Delete                                                     |
+| Write markdown         | Right click -> New -> Note                                                        |
+| Select multiple pods   | Drag on the Canvas                                                                |
+| Move a pod             | Use the drag handle on the toolbar                                                |
+| Move multiple pods     | Select multiple pods, then drag to move                                           |
+| Create a Scope         | Select multiple pods, right click on the selection, choose "create scope"         |
+| Delete a scope         | Scope toolbar -> More -> Delete                                                   |
+| Resize a pod           | Drag at the border on the right                                                   |
+| Resize a scope         | Drag at all borders or corners                                                    |
+| Move around the Canvas | Touchpad: Use two fingers to move around                                          |
+|                        | Mouse: hold Middle button then drag                                               |
+| Zoom in and out        | Touch pad: two fingers pinch                                                      |
+|                        | Mouse: scroll with middle button                                                  |
+|                        | UI: the + and - control on the bottom-left toolbar                                |
+| Run code               | Start the python kernel on the top-right menu, then use run button on the toolbar |
+| Create an edge         | Drag from the edge icon on the toolbar onto the target node                       |
+| Delete an edge         | Right click on the edge and choose "Delete"                                       |
 
 ## FAQs
 
@@ -42,6 +83,7 @@ Right click on the canvas, then click "python". This will create a python pod at
 <!-- <img src={require("./assets/right-click.png").default} alt="Right Click Menu" width="300"/> -->
 
 <!-- ![right-click](./assets/right-click.gif) -->
+
 ![create-pod](./assets/create-pod.gif)
 
 ### Pod toolbar
@@ -239,6 +281,7 @@ can write notes and documents in this editor.
 Right click on the Canvas and select "Import", then choose your jupyter notebook file. The notebook will be imported into a scope and layout horizontally.
 
 <!-- <img src={require("./assets/markdown.png").default} alt=""/> -->
+
 ![import](./assets/import.gif)
 
 ### (Best?) Practices to order the pods
