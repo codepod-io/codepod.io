@@ -26,8 +26,12 @@ This manual describes all the Operations and User Interface for the app.
 
 <!-- ![](https://youtu.be/ztDC98pR6Gw) -->
 
-<!-- width="560" height="315"  -->
-<iframe width="840" height="472.5" src="https://www.youtube.com/embed/ztDC98pR6Gw?si=yDkZLr6vUgLM6IpV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe 
+  style={{
+    width: "100%",
+    aspectRatio: 16/9,
+  }}
+src="https://www.youtube.com/embed/M0t2zxSrF6Q?si=1YweMxN8XHiArZlF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## tl;dr (Cheatsheet)
 
