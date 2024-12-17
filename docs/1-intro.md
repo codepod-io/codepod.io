@@ -10,6 +10,12 @@ bump interactive coding beyond prototyping and demos. Our website is
 [https://codepod.io](https://codepod.io). More details are in our paper:
 [https://arxiv.org/abs/2301.02410](https://arxiv.org/abs/2301.02410)
 
-Start with the [user manual](/docs/manual).
+## Get started with the following pointers
+
+Here are the pointers to get you started:
+
+- Read the [user manual](/docs/manual).
+- Try [the app](/login) online
+- Watch [tutorial videos](/docs/video)
 
 <!-- Codepod is free and open source, you can deploy your own CodePod by following hte [developer manual](/docs/developer). -->

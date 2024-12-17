@@ -98,6 +98,11 @@ const config: Config = {
           label: "Screenshots",
         },
         {
+          to: "docs/video",
+          position: "left",
+          label: "Videos",
+        },
+        {
           href: "https://github.com/codepod-io/codepod",
           label: "GitHub",
           position: "right",

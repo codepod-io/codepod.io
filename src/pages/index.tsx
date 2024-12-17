@@ -99,6 +99,20 @@ function Hero() {
             Read our paper <span aria-hidden="true">→</span>
           </a>
         </div>
+        <iframe
+          style={{
+            marginTop: "4rem",
+            width: "60%",
+            aspectRatio: 16 / 9,
+          }}
+          src="https://www.youtube.com/embed/M0t2zxSrF6Q"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+
         <div
           style={{
             marginTop: "4rem",
@@ -465,6 +479,47 @@ function Contact() {
   );
 }
 
+function Videos() {
+  return (
+    <div
+      style={{
+        // margin: "auto",
+        // width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "2rem",
+      }}
+    >
+      {/* <iframe
+        style={{
+          width: "40%",
+          aspectRatio: 16 / 9,
+        }}
+        src="https://www.youtube.com/embed/M0t2zxSrF6Q"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      ></iframe> */}
+      <iframe
+        style={{
+          width: "40%",
+          aspectRatio: 16 / 9,
+        }}
+        src="https://www.youtube.com/embed/06yr8FTTxtI"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      ></iframe>
+    </div>
+  );
+}
+
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -480,9 +535,10 @@ export default function Home(): JSX.Element {
       >
         {/* <HomepageFeatures /> */}
         <WhyIn3 />
+        <Videos />
         <LDAExample />
         <FeatureList2 />
-        <Team />
+        {/* <Team /> */}
         <Contact />
       </main>
     </Layout>

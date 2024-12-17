@@ -28,10 +28,10 @@ This manual describes all the Operations and User Interface for the app.
 
 <iframe 
   style={{
-    width: "100%",
+    width: "80%",
     aspectRatio: 16/9,
   }}
-src="https://www.youtube.com/embed/M0t2zxSrF6Q?si=1YweMxN8XHiArZlF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+src="https://www.youtube.com/embed/M0t2zxSrF6Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## tl;dr (Cheatsheet)
 
