@@ -54,7 +54,13 @@ export default function Login(): JSX.Element {
           }}
         >
           Looking for the previous version of CodePod? You can find it at{" "}
-          <a href="https://app.codepod.io" target="_blank">
+          <a
+            href="https://app.codepod.io"
+            target="_blank"
+            style={{
+              color: "black",
+            }}
+          >
             app.codepod.io (deprecated)
           </a>
           . Note that this version is deprecated and the{" "}
