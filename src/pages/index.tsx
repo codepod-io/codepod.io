@@ -440,8 +440,8 @@ function Team() {
           color: "#4B5563",
         }}
       >
-        We’re a dynamic group of individuals who are passionate about what we
-        do.
+        Our team is based in the SF Bay Area. We’re a dynamic group of
+        individuals who are passionate about what we do.
       </div>
       <div
         style={{
@@ -538,7 +538,7 @@ export default function Home(): JSX.Element {
         <Videos />
         <LDAExample />
         <FeatureList2 />
-        {/* <Team /> */}
+        <Team />
         <Contact />
       </main>
     </Layout>
