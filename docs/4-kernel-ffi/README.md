@@ -63,81 +63,6 @@ The transformed code is executed in the target language kernel, and results are 
 <img src={require("./assets/objRefSequence.png").default} alt="objRefSequence" width="800" />
 
 
-## Use Cases
-
-### Multi-Language Data Science
-Combine Python's data science libraries with Julia's performance or Rust's memory safety:
-
-```python
-# Python code calling Julia functions
-import numpy as np
-from julia import fast_algorithm
-
-data = np.array([1, 2, 3, 4, 5])
-result = fast_algorithm(data)  # Calls Julia function
-```
-
-### Web Development with Multiple Languages
-Use TypeScript for frontend logic while leveraging Python's backend capabilities:
-
-```typescript
-// TypeScript code calling Python functions
-import { processData } from './python-module';
-
-const userData = { name: "John", age: 30 };
-const processed = await processData(userData);  // Calls Python function
-```
-
-### System Programming Integration
-Combine high-level languages with low-level performance:
-
-```rust
-// Rust code calling Python ML functions
-use python_ml::{train_model, predict};
-
-let model = train_model(training_data);  // Calls Python function
-let prediction = predict(model, input);   // Calls Python function
-```
-
-## Getting Started
-
-### Prerequisites
-- Jupyter Notebook environment
-- Supported language kernels installed
-- Kernel-FFI framework
-
-### Basic Setup
-1. Install the required language kernels
-2. Configure Kernel-FFI in your Jupyter environment
-3. Start creating multi-language notebooks
-
-### Example: Simple Cross-Language Function Call
-
-**Host Language (Python):**
-```python
-def calculate_sum(a, b):
-    return a + b
-
-class DataProcessor:
-    def __init__(self, name):
-        self.name = name
-    
-    def process(self, data):
-        return f"Processed {data} by {self.name}"
-```
-
-**Client Language (TypeScript):**
-```typescript
-// Call Python function
-const result = await calculate_sum(5, 3);  // Returns 8
-
-// Create Python object
-const processor = new DataProcessor("TS Client");
-
-// Call method on Python object
-const processed = await processor.process("test data");
-```
-
 ## Advanced Features
 
 ### Object-Oriented Programming
@@ -175,24 +100,445 @@ Kernel-FFI uses a three-layer architecture:
 - **Side-Channel**: HTTP-based communication for non-blocking operations
 - **Object Store**: Global registry for managing cross-language objects
 
-## Benefits
 
-### For Developers
-- **Reduced Complexity**: No need for manual FFI bindings
-- **Increased Productivity**: Focus on logic, not language integration
-- **Interactive Development**: Immediate feedback in notebook environment
-- **Language Flexibility**: Choose the best language for each task
+## Client and Host examples
 
-### For Teams
-- **Skill Utilization**: Leverage team members' language expertise
-- **Code Reuse**: Share functionality across language boundaries
-- **Maintenance**: Single source of truth for cross-language functionality
+### Python
 
-## Getting Help
+```py
 
-- **Documentation**: [https://codepod.io/docs/kernel-ffi](https://codepod.io/docs/kernel-ffi)
-- **Source Code**: Open-source implementation available
-- **Community**: Join discussions and contribute
+# Python
+
+
+def foo(x):
+    return x+1
+
+a1 = 23
+
+class B1:
+    def __init__(self, v1):
+        self.v1 = v1
+    def m1(self, v2):
+        return self.v1 + v2
+
+b1 = B1(4)
+b1.m1(3)
+
+def fObjArg(x):
+    return x.v1 + 1
+
+def fObjRet(x):
+    return B1(x)
+
+
+
+# ------------------------------------------------------
+# Client code
+# ------------------------------------------------------
+
+foo(3) + 1
+a1 + 1
+b1.m1(9)
+
+b2 = B1(5)
+b2.m1(8)
+
+fObjArg(b2)
+fObjArg(b1)
+fObjArg(fObjRet(3))
+
+
+```
+
+### C++
+
+```cpp
+
+
+int foo(int x) {
+    return x + 1;
+}
+int a1 = 23;
+class B1 {
+private:
+    int v1;
+public:
+    B1(int v) : v1(v) {}
+    int m1(int v2) {
+        return v1 + v2;
+    }
+};
+B1 b1(4);
+b1.m1(3);
+int fObjArg(B1 x) {
+    return x.m1(0) + 1;
+}
+B1 fObjRet(int x) {
+    return B1(x);
+}
+
+
+// ------------------------------------------------------
+// Client for paper
+// ------------------------------------------------------
+
+foo(3).get<int>() + 1
+a1.get<int>() + 1
+b1.m1(2).get<int>() + 1
+
+auto b2 = B1(3)
+b2.call("m1")(8)
+
+fObjArg(b1)
+fObjArg(b2)
+fObjArg(fObjRet(3))
+
+
+```
+
+### C#
+
+```csharp
+
+
+int foo(int x) {
+    return x + 1;
+}
+int a1 = 23;
+class B1 {
+    private int v1;
+    public B1(int v1) {
+        this.v1 = v1;
+    }
+    public int m1(int v2) {
+        return v1 + v2;
+    }
+}
+var b1 = new B1(4);
+b1.m1(9);
+int fObjArg(B1 x) {
+    return x.m1(0) + 1;
+}
+dynamic fObjRet(int x) {
+    return new B1(x);
+}
+
+
+// ------------------------------------------------------
+// Client code
+// ------------------------------------------------------
+
+foo(3)
+a1 + 1
+b1.m1(9)
+
+var b2 = new B1(5);
+b2.m1(8)
+
+fObjArg(b2)
+fObjArg(b1)
+fObjArg(fObjRet(3))
+
+
+```
+
+### Go
+
+```go
+
+
+func foo(x int) int {
+	return x + 1
+}
+var a1 = 23
+
+type B1 struct {
+	v1 int
+}
+func (b *B1) m1(v2 int) int {
+	return b.v1 + v2
+}
+
+b1 := B1{v1: 4}
+b1.m1(3)
+
+func fObjArg(x B1) int {
+	return x.v1 + 1
+}
+func fObjRet(x int) B1 {
+	return B1{v1: x}
+}
+
+// ------------------------------------------------------
+// Client code for paper
+// ------------------------------------------------------
+
+foo(3)
+foo(3).(float64) + 1
+a1
+a1.(float64) + 1
+b1.m1(3)
+b2,err := B1(5)
+b2.Method("m1")(5)
+
+fObjArg(b2)
+fObjArg(b1)
+fObjArg(fObjRet(3))
+
+
+
+```
+
+### Julia
+
+```julia
+
+
+function foo(x)
+    return x+5
+end
+a1 = 23
+
+mutable struct B1
+    v1::Int
+end
+b1 = B1(12)
+function m1(b::B1, v2)
+    return b.v1 + v2
+end
+b1 = B1(4)
+m1(b1, 3)
+
+function fObjArg(x::B1)
+    return x.v1 + 1
+end
+function fObjRet(x)
+    return B1(x)
+end
+
+# ------------------------------------------------------
+# Client code
+# ------------------------------------------------------
+
+foo(3)
+a1 + 8
+b1.m1(9)
+
+b2 = B1(8)
+b2.m1(9)
+
+fObjArg(b2)
+fObjArg(b1)
+fObjArg(fObjRet(3))
+
+```
+
+### Ruby
+
+```rb
+# ------------------------------------------------------
+# Host code
+# ------------------------------------------------------
+
+def foo(x)
+  x + 1
+end
+a1 = 23
+class B1
+  def initialize(v1)
+    @v1 = v1
+  end
+
+  def m1(v2)
+    @v1 + v2
+  end
+end
+b1 = B1.new(4)
+b1.m1(3)
+def fObjArg(x)
+  x.m1(0) + 1
+end
+def fObjRet(x)
+  B1.new(x)
+end
+
+# ------------------------------------------------------
+# Client code
+# ------------------------------------------------------
+
+
+foo(3)
+a1
+b1.m1(4)
+
+b2 = B1(5)
+b2.m1(3)
+
+fObjArg(b2)
+fObjArg(b1)
+fObjArg(fObjRet(3))
+
+```
+
+### Racket
+
+```scheme
+
+(define-syntax (define-class stx)
+  (syntax-case stx ()
+    [(_ class-name (fields ...) body ...)
+     (with-syntax ([make-name (datum->syntax #'class-name
+                                             (string->symbol
+                                              (format "make-~a" (syntax-e #'class-name))))])
+       #'(begin
+           (define class-name
+             (class object%
+               (init-field fields ...)
+               (super-new)
+               body ...))
+           (define (make-name fields ...)
+             (new class-name [fields fields] ...))))]))
+
+; ------------------------------------------------------
+; Host code
+; ------------------------------------------------------
+
+
+(define (foo x)
+  (+ x 1))
+
+(define a1 23)
+
+(define-class B1 (v1)
+  (define/public (m1 v2)
+    (+ v1 v2)))
+
+(define b1 (make-B1 10))
+
+(send b1 m1 5)
+
+(define (fObjArg x)
+  (+ (send x m1 0) 1))
+
+(define (fObjRet x)
+  (make-B1 x))
+
+
+
+
+; ------------------------------------------------------
+; Client code
+; ------------------------------------------------------
+
+(foo 1)
+(+ a1 2)
+((send b1 call "m1") 2)
+
+(define b2 (B1 3))
+((send b2 call "m1") 3)
+
+(fObjArg b2)
+(fObjArg b1)
+(fObjArg (fObjRet 3))
+
+```
+
+### Rust
+
+```rs
+
+
+fn foo(x: i32) -> i32 {
+  x + 1
+}
+let a1 = 23;
+#[derive(Debug, Clone)]
+struct B1 {
+  v1: i32,
+}
+impl B1 {
+  fn new(v1: i32) -> Self {
+      Self { v1 }}
+  fn m1(&self, v2: i32) -> i32 {
+      self.v1 + v2 }}
+let b1 = B1::new(4);
+b1.m1(3)
+fn fObjArg(x: B1) -> i32 {
+    x.v1 + 1
+}
+fn fObjRet(x: i32) -> B1 {
+    B1::new(x)
+}
+
+
+// ------------------------------------------------------
+// Client code for paper
+// ------------------------------------------------------
+
+foo(3)
+foo(3).as_i64().unwrap()+1
+a1.as_i64().unwrap() + 1
+
+b1.m1(8)
+let b2 = B1(5);
+b2.call_method("m1",
+      vec![Value::from(3)])
+
+fObjArg(b2)
+fObjArg(b1)
+fObjArg(fObjRet(3))
+
+
+
+
+```
+
+### Typescript/Javascript
+
+```ts
+// ------------------------------------------------------------
+// Host code
+// ------------------------------------------------------------
+
+function foo(x) {
+  return x + 4;
+}
+const a1 = 2;
+class B1 {
+  v1;
+  constructor(v1) {
+    this.v1 = v1;
+  }
+  m1(x) {
+    return x + this.v1;
+  }
+}
+const b1 = new B1(2);
+b1.m1(3);
+function fObjArg(x) {
+  return x.v1 + 1;
+}
+function fObjRet(x) {
+  return new B1(x);
+}
+
+// ------------------------------------------------------------
+// Client code for paper
+// ------------------------------------------------------------
+
+await foo(3);
+1 + (await a1) + 2;
+await b1.m1(8);
+
+const b2 = await new B1(9);
+await b2.m1(19);
+
+await fObjArg(b2);
+await fObjArg(await b1);
+await fObjArg(await fObjRet(10));
+
+// end
+```
 
 ## Conclusion
 
