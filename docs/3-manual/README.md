@@ -1,4 +1,4 @@
-# CodePod App User Manual
+# User Manual
 
 Try it at https://test.codepod.io
 

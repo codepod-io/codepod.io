@@ -1,4 +1,4 @@
-# Press & Screenshots
+# Screenshots
 
 This document contains screenshots and gallery assets to give you an overall
 feel of what coding in CodePod IDE looks like.
