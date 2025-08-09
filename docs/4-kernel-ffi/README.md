@@ -6,6 +6,9 @@ Kernel-FFI is a transparent, language-agnostic framework that enables seamless c
 
 ![kernel-ffi-intro](./assets/kernel-ffi-intro.png)
 
+For technical details, please refer to the following paper:
+Hebi Li, Forrest Sheng Bao, Qi Xiao, and Jin Tian. *"Kernel-FFI: Transparent Foreign Function Interfaces for Interactive Notebooks"*, arXiv preprint arXiv:2507.23205 (2025) https://arxiv.org/abs/2507.23205
+
 ## What is Kernel-FFI?
 
 Kernel-FFI solves the challenge of multi-language development in interactive environments like Jupyter Notebooks. Traditional approaches require extensive manual configuration, boilerplate code, and often lack support for modern programming constructs like object-oriented programming and recursive calls.
