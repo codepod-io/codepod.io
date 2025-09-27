@@ -478,9 +478,7 @@ function Contact() {
       >
         For discussion or issue reporting, please open an issue or discussion in
         our GitHub repo. For general contact, please contact us at{" "}
-        <a href="mailto:contact@codepod.team">contact@codepod.team</a>. For
-        investment, partnership, or any other inquiries, please contact us at{" "}
-        <a href="mailto:invest@codepod.team">invest@codepod.team</a>
+        <a href="mailto:contact@codepod.io">contact@codepod.io</a>.
       </div>
     </div>
   );

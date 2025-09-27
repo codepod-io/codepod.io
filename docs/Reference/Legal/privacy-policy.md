@@ -55,4 +55,4 @@ Privacy Policy.
 Contact Us
 
 If you have any questions or concerns about our Privacy Policy or the handling
-of your personal information, please contact us at hebi@codepod.team.
+of your personal information, please contact us at contact@codepod.io.
