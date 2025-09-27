@@ -4,6 +4,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
+import { useState } from "react";
 
 import styles from "./index.module.css";
 import "@radix-ui/themes/styles.css";
@@ -459,6 +460,18 @@ function Team() {
 }
 
 function Contact() {
+  const [copied, setCopied] = useState(false);
+  
+  const handleEmailClick = async () => {
+    try {
+      await navigator.clipboard.writeText('contact@codepod.io');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+    } catch (err) {
+      console.error('Failed to copy email: ', err);
+    }
+  };
+
   return (
     <div
       // className="container"
@@ -478,7 +491,62 @@ function Contact() {
       >
         For discussion or issue reporting, please open an issue or discussion in
         our GitHub repo. For general contact, please contact us at{" "}
-        <a href="mailto:contact@codepod.io">contact@codepod.io</a>.
+        <span
+          onClick={handleEmailClick}
+          style={{
+            color: "#6366F1",
+            cursor: "pointer",
+            textDecoration: "none",
+            position: "relative",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.25rem",
+            transition: "opacity 0.2s, text-decoration 0.2s",
+            opacity: 0.8,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = "1";
+            e.currentTarget.style.textDecoration = "underline";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = "0.8";
+            e.currentTarget.style.textDecoration = "none";
+          }}
+        >
+          contact@codepod.io
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          {copied && (
+            <span
+              style={{
+                position: "absolute",
+                top: "-2rem",
+                left: "50%",
+                transform: "translateX(-50%)",
+                backgroundColor: "#10B981",
+                color: "white",
+                padding: "0.25rem 0.5rem",
+                borderRadius: "0.25rem",
+                fontSize: "0.875rem",
+                whiteSpace: "nowrap",
+                zIndex: 10,
+              }}
+            >
+              Copied to clipboard!
+            </span>
+          )}
+        </span>
       </div>
     </div>
   );
